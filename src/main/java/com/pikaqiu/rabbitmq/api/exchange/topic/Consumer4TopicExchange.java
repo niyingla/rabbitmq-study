@@ -28,16 +28,16 @@ public class Consumer4TopicExchange {
 		String queueName = "test_topic_queue";
 		//String routingKey = "user.*";
 		String routingKey = "user.*";
-		// 1 声明交换机 
+        // 1 声明交换机  String exchange, String type, boolean durable 是否持久化, boolean autoDelete, boolean internal, Map<String, Object> arguments
 		channel.exchangeDeclare(exchangeName, exchangeType, true, false, false, null);
-		// 2 声明队列
+		// 2 声明队列 String queue, boolean durable 是否持久化, boolean exclusive, boolean autoDelete, Map<String, Object> arguments
 		channel.queueDeclare(queueName, false, false, false, null);
-		// 3 建立交换机和队列的绑定关系:
+		// 3 建立交换机和队列的绑定关系: * 只匹配一层  #匹配两层
 		channel.queueBind(queueName, exchangeName, routingKey);
 		
         //durable 是否持久化消息
         QueueingConsumer consumer = new QueueingConsumer(channel);
-        //参数：队列名称、是否自动ACK、Consumer
+        //参数：队列名称、是否自动ACK（自动签收）、Consumer
         channel.basicConsume(queueName, true, consumer);  
         //循环获取消息  
         while(true){  
