@@ -37,14 +37,15 @@ public class Consumer4TopicExchange {
 		String exchangeType = "topic";
 		String queueName = "test_topic_queue";
 		//String routingKey = "user.*";
-		String routingKey = "user.*";
+		String routingKey = "user.#";
         // 1 声明交换机  String exchange, String type, boolean durable 是否持久化, boolean autoDelete, boolean internal, Map<String, Object> arguments
 		channel.exchangeDeclare(exchangeName, exchangeType, true, false, false, null);
 		// 2 声明队列 String queue, boolean durable 是否持久化, boolean exclusive, boolean autoDelete, Map<String, Object> arguments
 		channel.queueDeclare(queueName, false, false, false, null);
-		// 3 建立交换机和队列的绑定关系: * 只匹配一层  #匹配两层
-		channel.queueBind(queueName, exchangeName, routingKey);
-		
+		// 3 建立交换机和队列的绑定关系: * 只匹配一层  #匹配n层
+        //当你启动两次 routingKey 分别为"user.*" "user.#" channel就会绑定这两个
+        //为了避免问题 可以手动解绑不需要的
+        channel.queueBind(queueName, exchangeName, routingKey);
         //durable 是否持久化消息
         QueueingConsumer consumer = new QueueingConsumer(channel);
         //参数：队列名称、是否自动ACK（自动签收）、Consumer
