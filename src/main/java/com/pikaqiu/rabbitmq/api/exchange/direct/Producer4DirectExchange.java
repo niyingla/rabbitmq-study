@@ -6,7 +6,15 @@ import com.rabbitmq.client.ConnectionFactory;
 
 public class Producer4DirectExchange {
 
-	
+	/**
+	 * Direct Exchange 处理路由键。需要将一个队列绑定到交换机上，
+	 * 要求该消息与一个特定的路由键完全匹配。这是一个完整的匹配。
+ 	 * 如果一个队列绑定到该交换机上要求路由键 “test”, 则只有被标记为“test”
+	 * 的消息才被转发 ，不会转发test.aaa，也不会转发dog.123，只会转发test。
+
+	 * @param args
+	 * @throws Exception
+	 */
 	public static void main(String[] args) throws Exception {
 		
 		//1 创建ConnectionFactory
