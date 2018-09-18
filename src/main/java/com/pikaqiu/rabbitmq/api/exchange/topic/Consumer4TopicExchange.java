@@ -8,6 +8,13 @@ import com.rabbitmq.client.QueueingConsumer.Delivery;
 
 public class Consumer4TopicExchange {
 
+    /**先有消费者 再有生产者
+     * 不同的consumer注册到broker上
+     * 同样的生产者生产消息
+     * 消息将路由到符合规则的consumer上
+     * @param args
+     * @throws Exception
+     */
 	public static void main(String[] args) throws Exception {
 		
 		
