@@ -29,7 +29,7 @@ public class Consumer {
 
         //4 申明队列 (String queue 名字, boolean durable 是否持久化 （重启不消失）,
         // boolean exclusive 是否独占（队列 与 channel 一对一）集群消费时无法保证消费顺序可以设置为true 保证消费循序,
-        // boolean autoDelete 与exchange没关系时自动删除, Map<String, Object> arguments 参数)
+        // boolean autoDelete 没有consumer关系时自动删除, Map<String, Object> arguments 参数)
         String queueName = "pikaqiu";
 
         channel.queueDeclare(queueName, true, false, false, null);
