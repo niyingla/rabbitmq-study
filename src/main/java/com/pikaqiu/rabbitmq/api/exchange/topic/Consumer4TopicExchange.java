@@ -16,9 +16,12 @@ public class Consumer4TopicExchange {
         connectionFactory.setHost("134.175.5.236");
         connectionFactory.setPort(5672);
 		connectionFactory.setVirtualHost("/");
-		
+        //设置网络异常重连
         connectionFactory.setAutomaticRecoveryEnabled(true);
+        //设置 每10s重试一次
         connectionFactory.setNetworkRecoveryInterval(3000);
+        //设置重新声明交换器，队列等信息。
+        //connectionFactory.setTopologyRecoveryEnabled(true);
         Connection connection = connectionFactory.newConnection();
         
         Channel channel = connection.createChannel();  
