@@ -1,10 +1,10 @@
 package com.pikaqiu.rabbitmq.api.exchange.direct;
 
-import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.QueueingConsumer;
+import com.rabbitmq.client.*;
 import com.rabbitmq.client.QueueingConsumer.Delivery;
+
+import java.io.IOException;
+import java.util.Map;
 
 public class Consumer4DirectExchange {
 
@@ -39,6 +39,8 @@ public class Consumer4DirectExchange {
         String routingKey = "test.direct";
 
         //表示声明了一个交换机 exchange和queue一对多
+        //(String exchange, String type, boolean durable(持久化 重启不消失), boolean autoDelete（没有exchange自动删除）, boolean internal(内部使用), Map<String, Object> arguments) throws IOException {
+
         channel.exchangeDeclare(exchangeName, exchangeType, true, false, false, null);
         //表示声明了一个队列
         channel.queueDeclare(queueName, false, false, false, null);
