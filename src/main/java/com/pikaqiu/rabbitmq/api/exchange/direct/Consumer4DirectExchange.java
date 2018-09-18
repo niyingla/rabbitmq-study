@@ -16,8 +16,9 @@ public class Consumer4DirectExchange {
         connectionFactory.setHost("134.175.5.236");
         connectionFactory.setPort(5672);
 		connectionFactory.setVirtualHost("/");
-		
+		//自动重连
         connectionFactory.setAutomaticRecoveryEnabled(true);
+        //重试时间
         connectionFactory.setNetworkRecoveryInterval(3000);
         Connection connection = connectionFactory.newConnection();
         
