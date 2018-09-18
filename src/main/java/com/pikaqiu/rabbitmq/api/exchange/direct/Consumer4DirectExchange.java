@@ -38,7 +38,7 @@ public class Consumer4DirectExchange {
         String queueName = "test_direct_queue";
         String routingKey = "test.direct";
 
-        //表示声明了一个交换机
+        //表示声明了一个交换机 exchange和queue一对多
         channel.exchangeDeclare(exchangeName, exchangeType, true, false, false, null);
         //表示声明了一个队列
         channel.queueDeclare(queueName, false, false, false, null);
