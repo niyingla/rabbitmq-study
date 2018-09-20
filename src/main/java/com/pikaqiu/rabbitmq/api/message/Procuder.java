@@ -23,16 +23,21 @@ public class Procuder {
 		
 		//3 通过connection创建一个Channel
 		Channel channel = connection.createChannel();
-		
+
+		//创建headers map 里面可以携带一些消息参数
 		Map<String, Object> headers = new HashMap<>();
 		headers.put("my1", "111");
 		headers.put("my2", "222");
 		
 		
 		AMQP.BasicProperties properties = new AMQP.BasicProperties.Builder()
+				//投递模式  1非持久化投递 （重启就没了） 2持久化投递 （重启还有）
 				.deliveryMode(2)
+				//设置编码格式
 				.contentEncoding("UTF-8")
+				//设置过期毫秒
 				.expiration("10000")
+				//设置到消息属性
 				.headers(headers)
 				.build();
 		
