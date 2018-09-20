@@ -17,8 +17,10 @@ public class Consumer {
 		ConnectionFactory connectionFactory = new ConnectionFactory();
 		connectionFactory.setHost("134.175.5.236");
 		connectionFactory.setPort(5672);
+		//类似redis的第几个数据库
+		// 同一个virtualHost不能有相同名称主机
 		connectionFactory.setVirtualHost("/");
-		
+
 		//2 通过连接工厂创建连接
 		Connection connection = connectionFactory.newConnection();
 		
