@@ -38,8 +38,10 @@ public class Consumer {
 		while(true){
 			//7 获取消息
 			Delivery delivery = queueingConsumer.nextDelivery();
+			//获取消息体
 			String msg = new String(delivery.getBody());
 			System.err.println("消费端: " + msg);
+			//获取headers 类型就是 Map<String, Object>
 			Map<String, Object> headers = delivery.getProperties().getHeaders();
 			System.err.println("headers get my1 value: " + headers.get("my1"));
 			
