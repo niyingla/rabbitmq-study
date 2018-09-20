@@ -38,20 +38,19 @@ public class Producer {
 		
 		//6 添加一个确认监听
 		channel.addConfirmListener(new ConfirmListener() {
-			@Override
+
+			//消息投递失败的时候
+			@Override				//唯一标识			是否批量
 			public void handleNack(long deliveryTag, boolean multiple) throws IOException {
 				System.err.println("-------no ack!-----------");
 			}
-			
-			@Override
+
+			//消息投递成功的时候
+			@Override				//唯一标识			是否批量
 			public void handleAck(long deliveryTag, boolean multiple) throws IOException {
 				System.err.println("-------ack!-----------");
 			}
 		});
-		
-		
-		
-		
 		
 	}
 }
