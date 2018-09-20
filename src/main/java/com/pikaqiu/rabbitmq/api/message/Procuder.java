@@ -36,6 +36,9 @@ public class Procuder {
 				//设置编码格式
 				.contentEncoding("UTF-8")
 				//设置过期毫秒
+                //可以用来做订单有效时间
+                //当创建未支付订单时创建消息队列设置过期时间为30分钟
+                //支付后来读取本队列 过期了就告诉订单已取消 未过期就同意支付
 				.expiration("10000")
 				//设置到消息属性
 				.headers(headers)
