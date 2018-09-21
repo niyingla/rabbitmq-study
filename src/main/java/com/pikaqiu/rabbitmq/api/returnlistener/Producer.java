@@ -1,17 +1,19 @@
 package com.pikaqiu.rabbitmq.api.returnlistener;
 
-import java.io.IOException;
-
-import com.rabbitmq.client.AMQP;
+import com.rabbitmq.client.AMQP.BasicProperties;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.ReturnListener;
-import com.rabbitmq.client.AMQP.BasicProperties;
+
+import java.io.IOException;
 
 public class Producer {
 	/**
 	 * ReturnListener用来不可达消息的跟踪 （比如 没有exchange/routingKey无效）
+	 *
+	 *
+	 * 不可达消息队列 mandatory 要设置为true
 	 * @param args
 	 * @throws Exception
 	 */
@@ -48,8 +50,9 @@ public class Producer {
 				System.err.println("body: " + new String(body));
 			}
 		});
-		
-		
+
+		//默认false										mandatory 为true会自动监听不可达消息
+		//												为false broke会自动删除该消息
 		channel.basicPublish(exchange, routingKeyError, true, null, msg.getBytes());
 		
 		//channel.basicPublish(exchange, routingKeyError, true, null, msg.getBytes());
