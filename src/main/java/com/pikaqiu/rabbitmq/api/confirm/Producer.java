@@ -11,8 +11,7 @@ public class Producer {
 
 	
 	public static void main(String[] args) throws Exception {
-		
-		
+
 		//1 创建ConnectionFactory
 		ConnectionFactory connectionFactory = new ConnectionFactory();
 		connectionFactory.setHost("134.175.5.236");
@@ -51,6 +50,5 @@ public class Producer {
 				System.err.println("-------ack!-----------");
 			}
 		});
-		
 	}
 }
