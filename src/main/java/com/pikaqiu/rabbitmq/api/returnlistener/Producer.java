@@ -10,7 +10,11 @@ import com.rabbitmq.client.ReturnListener;
 import com.rabbitmq.client.AMQP.BasicProperties;
 
 public class Producer {
-
+	/**
+	 * ReturnListener用来不可达消息的跟踪 （比如 没有exchange/routingKey无效）
+	 * @param args
+	 * @throws Exception
+	 */
 	
 	public static void main(String[] args) throws Exception {
 		
@@ -34,7 +38,7 @@ public class Producer {
 			@Override
 			public void handleReturn(int replyCode, String replyText, String exchange,
 					String routingKey, BasicProperties properties, byte[] body) throws IOException {
-				
+
 				System.err.println("---------handle  return----------");
 				System.err.println("replyCode: " + replyCode);
 				System.err.println("replyText: " + replyText);
