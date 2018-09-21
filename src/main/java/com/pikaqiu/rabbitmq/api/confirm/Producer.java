@@ -34,7 +34,7 @@ public class Producer {
 		
 		//5 发送一条消息
 		String msg = "Hello RabbitMQ Send confirm message!";
-		channel.basicPub2lish(exchangeName, routingKey, null, msg.getBytes());
+		channel.basicPublish(exchangeName, routingKey, null, msg.getBytes());
 		
 		//6 添加一个确认监听
 		channel.addConfirmListener(new ConfirmListener() {
