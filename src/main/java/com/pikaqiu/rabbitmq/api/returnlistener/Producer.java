@@ -42,7 +42,9 @@ public class Producer {
 					String routingKey, BasicProperties properties, byte[] body) throws IOException {
 
 				System.err.println("---------handle  return----------");
+				//相应码
 				System.err.println("replyCode: " + replyCode);
+				//相应文本
 				System.err.println("replyText: " + replyText);
 				System.err.println("exchange: " + exchange);
 				System.err.println("routingKey: " + routingKey);
