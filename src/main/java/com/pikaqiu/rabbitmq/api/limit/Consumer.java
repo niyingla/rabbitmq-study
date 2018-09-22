@@ -39,12 +39,11 @@ public class Consumer {
 
         //一定数量的消息未被确认前 不会有新的消息推送过来
 
-        //1大小限制多少m 0 不限制 2最多处理多少消息 3是否全局 true channel级别 false consumer级别
+        //1大小限制多少m 0 不限制 2最多处理多少消息 一般设置 1
+        //3是否全局 true channel级别 false consumer级别
         //自动应答下 1 3 不生效
-        channel.basicQos(0, 1, false);
+        channel.basicQos(0, 2, false);
 
         channel.basicConsume(queueName, false, new MyConsumer(channel));
-
-
     }
 }
