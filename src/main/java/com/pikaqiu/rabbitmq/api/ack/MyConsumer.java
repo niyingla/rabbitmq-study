@@ -19,14 +19,17 @@ public class MyConsumer extends DefaultConsumer {
 
 	@Override
 	public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
+		System.out.println(System.currentTimeMillis());
 		System.err.println("-----------consume message----------");
 		System.err.println("body: " + new String(body));
-		try {
+/*		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		}
+		}*/
 		if((Integer)properties.getHeaders().get("num") == 0) {
+			//最后一个是是否重回队列
+			//设置为true 会把消息重新添加到队列的尾部 重新推送
 			channel.basicNack(envelope.getDeliveryTag(), false, true);
 		} else {
 			channel.basicAck(envelope.getDeliveryTag(), false);
