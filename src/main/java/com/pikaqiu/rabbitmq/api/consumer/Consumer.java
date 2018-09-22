@@ -28,7 +28,8 @@ public class Consumer {
 		channel.exchangeDeclare(exchangeName, "topic", true, false, null);
 		channel.queueDeclare(queueName, true, false, false, null);
 		channel.queueBind(queueName, exchangeName, routingKey);
-		
+
+//													自定义consumer
 		channel.basicConsume(queueName, true, new MyConsumer(channel));
 		
 		
