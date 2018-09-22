@@ -25,7 +25,7 @@ public class Producer {
 		String routingKey = "ack.save";
 		
 		
-		
+
 		for(int i =0; i<5; i ++){
 			
 			Map<String, Object> headers = new HashMap<String, Object>();
