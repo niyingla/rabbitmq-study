@@ -33,6 +33,9 @@ public class Consumer {
 		Map<String, Object> agruments = new HashMap<String, Object>();
 		//设置死信队列的名称
 		agruments.put("x-dead-letter-exchange", "dlx.exchange");
+		//设置整个对上消息的过期时间
+		agruments.put("x-message-ttl", 60000);
+
 		//这个agruments属性，要设置到声明队列上
 		channel.queueDeclare(queueName, true, false, false, agruments);
 		channel.queueBind(queueName, exchangeName, routingKey);
