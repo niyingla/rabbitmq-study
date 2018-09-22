@@ -8,7 +8,12 @@ import com.rabbitmq.client.QueueingConsumer.Delivery;
 
 public class Consumer {
 
-	
+	/**
+	 * 限流
+	 * @param args
+	 * @throws Exception
+	 */
+
 	public static void main(String[] args) throws Exception {
 		
 		
@@ -30,7 +35,10 @@ public class Consumer {
 		channel.queueBind(queueName, exchangeName, routingKey);
 		
 		//1 限流方式  第一件事就是 autoAck设置为 false
-		
+
+		//一定数量的消息未被确认前 不会有新的消息推送过来
+
+		//1大小限制多少m 2最多处理多少消息 3是否全局 true channel级别 false consumer级别
 		channel.basicQos(0, 1, false);
 		
 		channel.basicConsume(queueName, false, new MyConsumer(channel));
