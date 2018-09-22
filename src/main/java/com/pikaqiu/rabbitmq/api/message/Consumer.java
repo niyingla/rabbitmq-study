@@ -29,7 +29,15 @@ public class Consumer {
 		
 		//4 声明（创建）一个队列
 		String queueName = "test001";
-		channel.queueDeclare(queueName, true, false, false, null);
+
+
+//		Map<String, Object>  argss = new HashMap<String, Object>();
+//		argss.put("vhost", "/");
+//		argss.put("username","root");
+//		argss.put("password", "root");
+//		argss.put("x-message-ttl",6000); //消息队列内的消息都采用的过期时间
+
+		channel.queueDeclare(queueName, true, false, false, null);//argss
 		
 		//5 创建消费者
 		QueueingConsumer queueingConsumer = new QueueingConsumer(channel);
