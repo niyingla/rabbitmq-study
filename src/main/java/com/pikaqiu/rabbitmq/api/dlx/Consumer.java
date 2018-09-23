@@ -27,11 +27,11 @@ public class Consumer {
 		String exchangeName = "test_dlx_exchange";
 		String routingKey = "dlx.#";
 		String queueName = "test_dlx_queue";
-		
+		//普通队列申明
 		channel.exchangeDeclare(exchangeName, "topic", true, false, null);
 		
 		Map<String, Object> agruments = new HashMap<String, Object>();
-		//设置死信队列的名称
+		//设置死信队列的名称  一般用于消息补偿
 		agruments.put("x-dead-letter-exchange", "dlx.exchange");
 		//设置整个对上消息的过期时间
 		agruments.put("x-message-ttl", 60000);
