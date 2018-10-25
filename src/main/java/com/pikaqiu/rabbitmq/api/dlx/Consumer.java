@@ -40,11 +40,11 @@ public class Consumer {
 		channel.queueDeclare(queueName, true, false, false, agruments);
 		channel.queueBind(queueName, exchangeName, routingKey);
 		
-		//要进行死信队列的声明:
+		//要进行死信队列的声明:  队列死信后会转发到这里
 		channel.exchangeDeclare("dlx.exchange", "topic", true, false, null);
 		channel.queueDeclare("dlx.queue", true, false, false, null);
 		channel.queueBind("dlx.queue", "dlx.exchange", "#");
-		
+
 		channel.basicConsume(queueName, true, new MyConsumer(channel));
 		
 		
