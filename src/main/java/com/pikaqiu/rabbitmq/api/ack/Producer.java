@@ -10,25 +10,24 @@ import com.rabbitmq.client.ConnectionFactory;
 
 public class Producer {
 
-	
-	public static void main(String[] args) throws Exception {
-		
-		ConnectionFactory connectionFactory = new ConnectionFactory();
-		connectionFactory.setHost("134.175.5.236");
-		connectionFactory.setPort(5672);
-		connectionFactory.setVirtualHost("/");
-		
-		Connection connection = connectionFactory.newConnection();
-		Channel channel = connection.createChannel();
-		
-		String exchange = "test_ack_exchange";
-		String routingKey = "ack.save";
-		
-		
+
+    public static void main(String[] args) throws Exception {
+
+        ConnectionFactory connectionFactory = new ConnectionFactory();
+        connectionFactory.setHost("134.175.5.236");
+        connectionFactory.setPort(5672);
+        connectionFactory.setVirtualHost("/");
+
+        Connection connection = connectionFactory.newConnection();
+        Channel channel = connection.createChannel();
+
+        String exchange = "test_ack_exchange";
+        String routingKey = "ack.save";
+
 
 		//循环发送五条消息
 		for(int i =0; i<5; i ++){
-			
+
 			Map<String, Object> headers = new HashMap<String, Object>();
 			headers.put("num", i);
 			//创建基础属性

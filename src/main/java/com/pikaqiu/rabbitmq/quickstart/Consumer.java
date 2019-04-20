@@ -42,7 +42,7 @@ public class Consumer {
 
         //7 获取消息
         while (true) {
-           QueueingConsumer.Delivery delivery = queueingConsumer.nextDelivery();
+            QueueingConsumer.Delivery delivery = queueingConsumer.nextDelivery();
 
             String message = new String(delivery.getBody());
 
