@@ -35,6 +35,7 @@ public class Consumer {
 
         //5 创建消费者
         QueueingConsumer queueingConsumer = new QueueingConsumer(channel);
+        //                              自动ack？
         channel.basicConsume(queueName, true, queueingConsumer);
 
         while (true) {
