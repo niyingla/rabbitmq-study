@@ -10,6 +10,10 @@ import com.rabbitmq.client.Envelope;
 public class MyConsumer extends DefaultConsumer {
 
 
+	/**
+	 * ack 手动签收
+	 */
+	
 	private Channel channel ;
 	
 	public MyConsumer(Channel channel) {
