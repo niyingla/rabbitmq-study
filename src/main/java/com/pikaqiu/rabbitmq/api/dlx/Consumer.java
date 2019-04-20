@@ -34,7 +34,7 @@ public class Consumer {
         //设置死信队列的名称  一般用于消息补偿
         agruments.put("x-dead-letter-exchange", "dlx.exchange");
         //设置整个对上消息的过期时间
-        agruments.put("x-message-ttl", 60000);
+        agruments.put("x-message-ttl", 600000);
 
 		//这个agruments属性，要设置到声明队列上
 		channel.queueDeclare(queueName, true, false, false, agruments);
