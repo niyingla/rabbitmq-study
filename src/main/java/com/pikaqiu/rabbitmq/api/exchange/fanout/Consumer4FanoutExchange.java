@@ -9,6 +9,8 @@ import com.rabbitmq.client.QueueingConsumer.Delivery;
 public class Consumer4FanoutExchange {
 
     /**
+     *
+     * 广播模式
      * 先有消费者 再有生产者
      * 不同的consumer注册到broker上
      * 同样的生产者生产消息

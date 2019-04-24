@@ -9,6 +9,7 @@ import com.rabbitmq.client.QueueingConsumer.Delivery;
 public class Consumer4TopicExchange {
 
     /**
+     * topic 模式  还有一个head模式  所有head 符合目标才投递
      * 先有消费者 再有生产者
      * 不同的consumer注册到broker上
      * 同样的生产者生产消息
