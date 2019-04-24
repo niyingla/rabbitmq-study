@@ -37,21 +37,17 @@ public class Producer {
         String msg = "Hello RabbitMQ Return Message";
 
 
-        channel.addReturnListener(new ReturnListener() {
-            @Override
-            public void handleReturn(int replyCode, String replyText, String exchange,
-                                     String routingKey, BasicProperties properties, byte[] body) throws IOException {
+        channel.addReturnListener((replyCode, replyText, exchange1, routingKey1, properties, body) -> {
 
-                System.err.println("---------handle  return----------");
-                //响应码
-                System.err.println("replyCode: " + replyCode);
-                //响应文本
-                System.err.println("replyText: " + replyText);
-                System.err.println("exchange: " + exchange);
-                System.err.println("routingKey: " + routingKey);
-                System.err.println("properties: " + properties);
-                System.err.println("body: " + new String(body));
-            }
+            System.err.println("---------handle  return----------");
+            //响应码
+            System.err.println("replyCode: " + replyCode);
+            //响应文本
+            System.err.println("replyText: " + replyText);
+            System.err.println("exchange: " + exchange1);
+            System.err.println("routingKey: " + routingKey1);
+            System.err.println("properties: " + properties);
+            System.err.println("body: " + new String(body));
         });
 
         //默认false				当消息不可达				mandatory 为true ReturnListener会自动监听不可达消息
