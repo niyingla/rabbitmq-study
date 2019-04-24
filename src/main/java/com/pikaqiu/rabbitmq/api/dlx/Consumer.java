@@ -45,12 +45,11 @@ public class Consumer {
 		channel.exchangeDeclare("dlx.exchange", "topic", true, false, null);
 		channel.queueDeclare("dlx.queue", true, false, false, null);
 		channel.queueBind("dlx.queue", "dlx.exchange", "#");
-		//死信后的队列
-		channel.basicConsume("dlx.queue", true, new MyConsumer(channel));
-		//正常队列
+
+        //死信后的队列
+        channel.basicConsume("dlx.queue", true, new MyConsumer(channel));
+        //正常队列
         channel.basicConsume(queueName, true, new MyConsumer(channel));
-
-
 
     }
 }
